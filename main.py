@@ -1,5 +1,6 @@
 import pickle
 import os
+import matplotlib.pyplot as plt
 
 files_path = r"dataset"
 
@@ -19,5 +20,8 @@ for file in names:
         data = unpickle(path_file)
         print(len(data))
         print(data.keys())
-        print(data[b'labels'])
+        print(data[b'data'].shape)
+        print(data[b'data'][0])
+        plt.imshow(data[b'data'][5].reshape(32,32,3))
+        plt.show()
         break
