@@ -21,7 +21,9 @@ for file in names:
         print(len(data))
         print(data.keys())
         print(data[b'data'].shape)
-        print(data[b'data'][0])
-        plt.imshow(data[b'data'][5].reshape(32,32,3))
+        print(data[b'labels'][600])
+        print(data[b'filenames'][600])
+        plt.figure(figsize = (0.5,0.5))
+        plt.imshow(data[b'data'][600].reshape(32,32,3), aspect='auto')
         plt.show()
         break
