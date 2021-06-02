@@ -20,10 +20,11 @@ for file in names:
         data = unpickle(path_file)
         print(len(data))
         print(data.keys())
-        print(data[b'data'].shape)
-        print(data[b'labels'][600])
-        print(data[b'filenames'][600])
-        plt.figure(figsize = (0.5,0.5))
-        plt.imshow(data[b'data'][600].reshape(32,32,3), aspect='auto')
+        img = data[b'data'][900]
+        img_r = img[0:1024].reshape(32,32)/255.0
+        img_g = img[1024:2048].reshape(32,32)/255.0
+        img_b = img[2048:].reshape(32,32)/255.0
+        img_render = np.dstack((img_r, img_g, img_b))
+        plt.imshow(data[b'data'][900].reshape(32,32,3), interpolation='nearest')
         plt.show()
         break
