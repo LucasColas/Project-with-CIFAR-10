@@ -1,6 +1,7 @@
 import pickle
 import os
 import matplotlib.pyplot as plt
+import numpy as np
 
 files_path = r"dataset"
 
@@ -25,6 +26,6 @@ for file in names:
         img_g = img[1024:2048].reshape(32,32)/255.0
         img_b = img[2048:].reshape(32,32)/255.0
         img_render = np.dstack((img_r, img_g, img_b))
-        plt.imshow(data[b'data'][900].reshape(32,32,3), interpolation='nearest')
+        plt.imshow(img_render, interpolation='bicubic')
         plt.show()
         break
