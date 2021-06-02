@@ -22,9 +22,9 @@ for file in names:
         print(len(data))
         print(data.keys())
         img = data[b'data'][900]
-        img_r = img[0:1024].reshape(32,32)/255.0
-        img_g = img[1024:2048].reshape(32,32)/255.0
-        img_b = img[2048:].reshape(32,32)/255.0
+        img_r = img[0:1024].reshape(32,32)
+        img_g = img[1024:2048].reshape(32,32)
+        img_b = img[2048:].reshape(32,32)
         img_render = np.dstack((img_r, img_g, img_b))
         plt.imshow(img_render, interpolation='bicubic')
         plt.show()
