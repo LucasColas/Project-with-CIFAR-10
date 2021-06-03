@@ -49,10 +49,13 @@ def render_several_images(files_path, file, num):
         img_r = img[0:1024].reshape(32,32)
         img_g = img[1024:2048].reshape(32,32)
         img_b = img[2048:].reshape(32,32)
-        
+
         img_render = np.dstack((img_r, img_g, img_b))
         plt.imshow(img_render)
 
 
 
     plt.show()
+
+
+render_several_images(files_path, names[2], 5)
