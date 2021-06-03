@@ -27,7 +27,8 @@ for file in names:
         img_b = img[2048:].reshape(32,32)
         img_render = np.dstack((img_r, img_g, img_b))
         plt.imshow(img_render, interpolation='bicubic')
-        plt.show()
+        plt.imshow(img_render)
+        #plt.show()
         break
 
 
