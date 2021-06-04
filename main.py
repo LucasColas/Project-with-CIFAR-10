@@ -3,6 +3,8 @@ import os
 import matplotlib.pyplot as plt
 import numpy as np
 
+
+
 files_path = r"dataset"
 
 def unpickle(file):
@@ -13,14 +15,10 @@ def unpickle(file):
 
 names = os.listdir(files_path)
 print(names)
-"""
-for name in names:
-    if "data" in name:
-        path_file = os.path.join(files_path, name)
-        dataset = unpickle(path_file)
-        print(len(dataset[b'data']))
 
-"""
+
+
+
 
 def render_one_image(files_path, file, i):
 
@@ -67,3 +65,18 @@ def render_several_images(files_path, file, num):
 
 
 #render_several_images(files_path, names[2], 5)
+
+def order_images(dataset):
+    data = dataset[b'data']
+    labels = dataset[b'labels']
+    for data, label in zip(data, labels):
+        print(data, label)
+
+
+for name in names:
+    if "data" in name:
+        path_file = os.path.join(files_path, name)
+        dataset = unpickle(path_file)
+        print(len(dataset[b'data']))
+        order_images(dataset)
+        break
