@@ -13,6 +13,14 @@ def unpickle(file):
 
 names = os.listdir(files_path)
 print(names)
+"""
+for name in names:
+    if "data" in name:
+        path_file = os.path.join(files_path, name)
+        dataset = unpickle(path_file)
+        print(len(dataset[b'data']))
+
+"""
 
 def render_one_image(files_path, file, i):
 
@@ -58,4 +66,4 @@ def render_several_images(files_path, file, num):
     plt.show()
 
 
-render_several_images(files_path, names[2], 5)
+#render_several_images(files_path, names[2], 5)
