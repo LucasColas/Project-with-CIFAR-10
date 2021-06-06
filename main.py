@@ -69,11 +69,12 @@ def render_several_images(files_path, file, num):
 def order_images(dataset):
     data = dataset[b'data']
     labels = dataset[b'labels']
-    labeled_data = np.zeros((len(dataset), 32,32,32,2))
+    labeled_data = []
     for data, label in zip(data, labels):
         data_preprocessed = np.reshape(32,32,3)/255
-        
+        labeled_data.append(data_preprocessed)
 
+    labeled_data = np.asarray(labeled_data)
     return labeled_data
 
 
