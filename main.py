@@ -69,8 +69,10 @@ def render_several_images(files_path, file, num):
 def order_images(dataset):
     data = dataset[b'data']
     labels = dataset[b'labels']
+    labeled_data = []
     for data, label in zip(data, labels):
-        print(data, label)
+        labeled_data.append((data, label))
+    return labeled_data
 
 
 for name in names:
