@@ -69,13 +69,13 @@ def render_several_images(files_path, file, num):
 def order_images(dataset):
     data = dataset[b'data']
     labels = dataset[b'labels']
-    labeled_data = []
+    labeled_data = np.zeros((len(dataset), 32,32,32,2))
     for data, label in zip(data, labels):
         img_r = data[0:1024].reshape(32,32)/255
         img_g = data[1024:2048].reshape(32,32)/255
         img_b = data[2048:].reshape(32,32)/255
         data_preprocessed = np.dstack((img_r, img_g, img_b))
-        
+
     return labeled_data
 
 
