@@ -71,10 +71,9 @@ def order_images(dataset):
     data = dataset[b'data']
     labels = dataset[b'labels']
     labeled_data = []
+
     for data, label in zip(data, labels):
-        print(data)
-        data_preprocessed = np.reshape(32,32,3)
-        print(data)
+        data_preprocessed = data.reshape(32,32,3)
         labeled_data.append(data_preprocessed)
 
     labeled_data = np.asarray(labeled_data)
@@ -86,5 +85,6 @@ for name in names:
         path_file = os.path.join(files_path, name)
         dataset = unpickle(path_file)
         print(len(dataset[b'data']))
+        print(dataset)
         new_ds = order_images(dataset)
         break
