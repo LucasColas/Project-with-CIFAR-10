@@ -67,11 +67,14 @@ def render_several_images(files_path, file, num):
 #render_several_images(files_path, names[2], 5)
 
 def order_images(dataset):
+
     data = dataset[b'data']
     labels = dataset[b'labels']
     labeled_data = []
     for data, label in zip(data, labels):
-        data_preprocessed = np.reshape(32,32,3)/255
+        print(data)
+        data_preprocessed = np.reshape(32,32,3)
+        print(data)
         labeled_data.append(data_preprocessed)
 
     labeled_data = np.asarray(labeled_data)
@@ -84,5 +87,4 @@ for name in names:
         dataset = unpickle(path_file)
         print(len(dataset[b'data']))
         new_ds = order_images(dataset)
-        print(new_ds)
         break
