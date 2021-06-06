@@ -83,5 +83,6 @@ for name in names:
         path_file = os.path.join(files_path, name)
         dataset = unpickle(path_file)
         print(len(dataset[b'data']))
-        order_images(dataset)
+        new_ds = order_images(dataset)
+        print(new_ds)
         break
