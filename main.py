@@ -106,3 +106,25 @@ for name in names:
         dataset = unpickle(path_file)
         data = dataset[b'data']
         labels = dataset[b'labels']
+        for data, label in zip(data, labels):
+            data_preprocessed = data.reshape(32,32,3)
+            X_valid.append(data_preprocessed)
+            Y_valid.append(label)
+
+    if name == "test_batch":
+        path_file = os.path.join(files_path, name)
+        dataset = unpickle(path_file)
+        data = dataset[b'data']
+        labels = dataset[b'labels']
+        for data, label in zip(data, labels):
+            data_preprocessed = data.reshape(32,32,3)
+            X_test.append(data_preprocessed)
+            Y_test.append(label)
+
+
+    X_train = np.asarray(X_train)
+    X_test = np.asarray(X_test)
+    X_valid = np.asarray(X_valid)
+    Y_valid = np.asarray(Y_valid)
+    X_test = np.asarray(X_test)
+    Y_test = np.asarray(Y_test)
