@@ -89,14 +89,10 @@ for name in names:
     if name in data_train_names:
         path_file = os.path.join(files_path, name)
         dataset = unpickle(path_file)
-        #print(len(dataset[b'data']))
-        #print(dataset)
-        #new_ds, labels = order_images(dataset)
         data = dataset[b'data']
         labels = dataset[b'labels']
-        ds = []
-        labels_ds = []
+
         for data, label in zip(data, labels):
             data_preprocessed = data.reshape(32,32,3)
-            ds.append(data_preprocessed)
-            labels_ds.append(label)
+            X_train.append(data_preprocessed)
+            Y_train.append(label)
