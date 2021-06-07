@@ -4,6 +4,8 @@ import matplotlib.pyplot as plt
 import numpy as np
 import tensorflow as tf
 from tensorflow import keras
+#from tensorflow.keras.applications import VGG16
+from tensorflow.keras import layers, models, optimizers
 
 
 files_path = r"dataset"
