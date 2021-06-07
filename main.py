@@ -2,7 +2,8 @@ import pickle
 import os
 import matplotlib.pyplot as plt
 import numpy as np
-
+import tensorflow as tf
+from tensorflow import keras
 
 
 files_path = r"dataset"
@@ -16,9 +17,6 @@ def unpickle(file):
 
 names = os.listdir(files_path)
 print(names)
-
-
-
 
 
 def render_one_image(files_path, file, i):
