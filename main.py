@@ -120,3 +120,9 @@ def get_dataset(files_path, names):
         return X_train, X_test, X_valid, Y_valid, X_test, Y_test
 
 X_train, X_test, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
+
+
+
+model = models.Sequential()
+
+model.add(layers.Conv2D(32, (3,3), activation='relu', input_shape=(32,32,3)))
