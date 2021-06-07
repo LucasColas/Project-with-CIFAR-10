@@ -70,21 +70,31 @@ def order_images(dataset):
 
     data = dataset[b'data']
     labels = dataset[b'labels']
-    labeled_data = []
+    ds = []
+    labels_ds = []
 
     for data, label in zip(data, labels):
         data_preprocessed = data.reshape(32,32,3)
-        labeled_data.append(data_preprocessed)
+        ds.append(data_preprocessed)
+        labels_ds.append(label)
 
-    labeled_data = np.asarray(labeled_data)
-    return labeled_data
+    return ds,labels_ds
 
 
 for name in names:
+    X_train, Y_train = [], []
+
     if "data" in name:
         path_file = os.path.join(files_path, name)
         dataset = unpickle(path_file)
-        print(len(dataset[b'data']))
-        print(dataset)
-        new_ds = order_images(dataset)
-        break
+        #print(len(dataset[b'data']))
+        #print(dataset)
+        #new_ds, labels = order_images(dataset)
+        data = dataset[b'data']
+        labels = dataset[b'labels']
+        ds = []
+        labels_ds = []
+        for data, label in zip(data, labels):
+            data_preprocessed = data.reshape(32,32,3)
+            ds.append(data_preprocessed)
+            labels_ds.append(label)
