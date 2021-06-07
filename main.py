@@ -85,8 +85,12 @@ def order_images(dataset):
 
 for name in names:
     X_train, Y_train = [], []
+    X_valid, Y_valid = [], []
+    X_test, Y_test = [], []
 
     if name in data_train_names:
+        print("yes")
+
         path_file = os.path.join(files_path, name)
         dataset = unpickle(path_file)
         data = dataset[b'data']
@@ -96,3 +100,9 @@ for name in names:
             data_preprocessed = data.reshape(32,32,3)
             X_train.append(data_preprocessed)
             Y_train.append(label)
+
+    if name == "data_batch_5":
+        path_file = os.path.join(files_path, name)
+        dataset = unpickle(path_file)
+        data = dataset[b'data']
+        labels = dataset[b'labels']
