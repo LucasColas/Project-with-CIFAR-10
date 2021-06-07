@@ -67,64 +67,56 @@ def render_several_images(files_path, file, num):
 
 #render_several_images(files_path, names[2], 5)
 
-def order_images(dataset):
-
-    data = dataset[b'data']
-    labels = dataset[b'labels']
-    ds = []
-    labels_ds = []
-
-    for data, label in zip(data, labels):
-        data_preprocessed = data.reshape(32,32,3)
-        ds.append(data_preprocessed)
-        labels_ds.append(label)
-
-    return ds,labels_ds
 
 
 
-for name in names:
-    X_train, Y_train = [], []
-    X_valid, Y_valid = [], []
-    X_test, Y_test = [], []
+def get_dataset(files_path, names):
+    for name in names:
+        X_train, Y_train = [], []
+        X_valid, Y_valid = [], []
+        X_test, Y_test = [], []
 
-    if name in data_train_names:
-        print("yes")
+        if name in data_train_names:
+            print("yes")
 
-        path_file = os.path.join(files_path, name)
-        dataset = unpickle(path_file)
-        data = dataset[b'data']
-        labels = dataset[b'labels']
+            path_file = os.path.join(files_path, name)
+            dataset = unpickle(path_file)
+            data = dataset[b'data']
+            labels = dataset[b'labels']
 
-        for data, label in zip(data, labels):
-            data_preprocessed = data.reshape(32,32,3)
-            X_train.append(data_preprocessed)
-            Y_train.append(label)
+            for data, label in zip(data, labels):
+                data_preprocessed = data.reshape(32,32,3)
+                X_train.append(data_preprocessed)
+                Y_train.append(label)
 
-    if name == "data_batch_5":
-        path_file = os.path.join(files_path, name)
-        dataset = unpickle(path_file)
-        data = dataset[b'data']
-        labels = dataset[b'labels']
-        for data, label in zip(data, labels):
-            data_preprocessed = data.reshape(32,32,3)
-            X_valid.append(data_preprocessed)
-            Y_valid.append(label)
+        if name == "data_batch_5":
+            path_file = os.path.join(files_path, name)
+            dataset = unpickle(path_file)
+            data = dataset[b'data']
+            labels = dataset[b'labels']
+            for data, label in zip(data, labels):
+                data_preprocessed = data.reshape(32,32,3)
+                X_valid.append(data_preprocessed)
+                Y_valid.append(label)
 
-    if name == "test_batch":
-        path_file = os.path.join(files_path, name)
-        dataset = unpickle(path_file)
-        data = dataset[b'data']
-        labels = dataset[b'labels']
-        for data, label in zip(data, labels):
-            data_preprocessed = data.reshape(32,32,3)
-            X_test.append(data_preprocessed)
-            Y_test.append(label)
+        if name == "test_batch":
+            path_file = os.path.join(files_path, name)
+            dataset = unpickle(path_file)
+            data = dataset[b'data']
+            labels = dataset[b'labels']
+            for data, label in zip(data, labels):
+                data_preprocessed = data.reshape(32,32,3)
+                X_test.append(data_preprocessed)
+                Y_test.append(label)
 
 
-    X_train = np.asarray(X_train)
-    X_test = np.asarray(X_test)
-    X_valid = np.asarray(X_valid)
-    Y_valid = np.asarray(Y_valid)
-    X_test = np.asarray(X_test)
-    Y_test = np.asarray(Y_test)
+        X_train = np.asarray(X_train)
+        X_test = np.asarray(X_test)
+        X_valid = np.asarray(X_valid)
+        Y_valid = np.asarray(Y_valid)
+        X_test = np.asarray(X_test)
+        Y_test = np.asarray(Y_test)
+
+        return X_train, X_test, X_valid, Y_valid, X_test, Y_test
+
+X_train, X_test, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
