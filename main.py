@@ -6,6 +6,7 @@ import numpy as np
 
 
 files_path = r"dataset"
+data_train_names = ["data_batch_1", "data_batch_2","data_batch_3", "data_batch_4"]
 
 def unpickle(file):
     with open(file, 'rb') as fo:
@@ -81,10 +82,11 @@ def order_images(dataset):
     return ds,labels_ds
 
 
+
 for name in names:
     X_train, Y_train = [], []
 
-    if "data" in name:
+    if name in data_train_names:
         path_file = os.path.join(files_path, name)
         dataset = unpickle(path_file)
         #print(len(dataset[b'data']))
