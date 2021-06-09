@@ -139,4 +139,5 @@ model.add(layers.Dense(512, activation='relu'))
 model.add(layers.Dense(10,activation='softmax'))
 
 
-model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy")
+model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
+history = model.fit(X_train, Y_train, batch_size=32, epochs=16, validation_data=(X_valid, Y_valid))
