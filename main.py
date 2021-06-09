@@ -65,7 +65,7 @@ def render_several_images(files_path, file, num):
     plt.show()
 
 
-#render_several_images(files_path, names[2], 5)
+#render_several_images(files_path, names[2], 9)
 
 
 
