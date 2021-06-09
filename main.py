@@ -137,3 +137,6 @@ model.add(layers.MaxPooling2D(2,2))
 model.add(layers.Flatten())
 model.add(layers.Dense(512, activation='relu'))
 model.add(layers.Dense(10,activation='softmax'))
+
+
+model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy")
