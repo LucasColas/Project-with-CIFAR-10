@@ -71,7 +71,7 @@ def render_several_images(files_path, file, num):
 
 
 def get_dataset(files_path, names):
-    
+
     X_train, Y_train = [], []
     X_valid, Y_valid = [], []
     X_test, Y_test = [], []
@@ -113,14 +113,14 @@ def get_dataset(files_path, names):
                 Y_test.append(label)
 
 
-        X_train = np.asarray(X_train)
-        Y_train = np.asarray(Y_train)
-        X_valid = np.asarray(X_valid)
-        Y_valid = np.asarray(Y_valid)
-        X_test = np.asarray(X_test)
-        Y_test = np.asarray(Y_test)
+    X_train = np.asarray(X_train)
+    Y_train = np.asarray(Y_train)
+    X_valid = np.asarray(X_valid)
+    Y_valid = np.asarray(Y_valid)
+    X_test = np.asarray(X_test)
+    Y_test = np.asarray(Y_test)
 
-        return X_train, Y_train, X_valid, Y_valid, X_test, Y_test
+    return X_train, Y_train, X_valid, Y_valid, X_test, Y_test
 
 X_train, Y_train, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
 
