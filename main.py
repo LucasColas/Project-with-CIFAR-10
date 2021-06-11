@@ -128,6 +128,7 @@ X_train, Y_train, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, nam
 
 model = models.Sequential()
 
+
 model.add(layers.Conv2D(32, (3,3), activation='relu', input_shape=(32,32,3)))
 model.add(layers.MaxPooling2D(2,2))
 model.add(layers.Conv2D(64, (3,3), padding="same", activation='relu'))
