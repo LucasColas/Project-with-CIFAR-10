@@ -111,7 +111,7 @@ def get_dataset(files_path, names):
 
 
         X_train = np.asarray(X_train)
-        X_test = np.asarray(X_test)
+        Y_train = np.asarray(Y_train)
         X_valid = np.asarray(X_valid)
         Y_valid = np.asarray(Y_valid)
         X_test = np.asarray(X_test)
@@ -119,7 +119,7 @@ def get_dataset(files_path, names):
 
         return X_train, X_test, X_valid, Y_valid, X_test, Y_test
 
-X_train, X_test, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
+X_train, Y_train, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
 
 
 
@@ -127,12 +127,12 @@ model = models.Sequential()
 
 model.add(layers.Conv2D(32, (3,3), activation='relu', input_shape=(32,32,3)))
 model.add(layers.MaxPooling2D(2,2))
-model.add(layers.Conv2D(64, (3,3), activation='relu'))
+model.add(layers.Conv2D(64, (3,3), padding="same", activation='relu'))
 model.add(layers.Conv2D(32, (3,3)))
 model.add(layers.MaxPooling2D(2,2))
-model.add(layers.Conv2D(64, (3,3), activation='relu'))
+model.add(layers.Conv2D(64, (3,3), padding="same", activation='relu'))
 model.add(layers.MaxPooling2D(2,2))
-model.add(layers.Conv2D(128, (3,3), activation="relu"))
+model.add(layers.Conv2D(128, (3,3), padding="same", activation="relu"))
 model.add(layers.MaxPooling2D(2,2))
 model.add(layers.Flatten())
 model.add(layers.Dense(512, activation='relu'))
