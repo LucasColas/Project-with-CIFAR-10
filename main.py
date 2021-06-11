@@ -71,10 +71,13 @@ def render_several_images(files_path, file, num):
 
 
 def get_dataset(files_path, names):
+    
+    X_train, Y_train = [], []
+    X_valid, Y_valid = [], []
+    X_test, Y_test = [], []
+
     for name in names:
-        X_train, Y_train = [], []
-        X_valid, Y_valid = [], []
-        X_test, Y_test = [], []
+
 
         if name in data_train_names:
             print("yes")
