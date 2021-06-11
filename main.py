@@ -117,7 +117,7 @@ def get_dataset(files_path, names):
         X_test = np.asarray(X_test)
         Y_test = np.asarray(Y_test)
 
-        return X_train, X_test, X_valid, Y_valid, X_test, Y_test
+        return X_train, Y_train, X_valid, Y_valid, X_test, Y_test
 
 X_train, Y_train, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
 
