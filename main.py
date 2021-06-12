@@ -153,4 +153,4 @@ model.add(layers.Dense(10,activation='softmax'))
 
 print(X_train.shape, X_valid.shape,X_test.shape )
 model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
-history = model.fit(X_train, Y_train, batch_size=32, epochs=16, validation_data=(X_valid, Y_valid))
+history = model.fit(X_train, Y_train, batch_size=64, epochs=25, validation_data=(X_valid, Y_valid))
