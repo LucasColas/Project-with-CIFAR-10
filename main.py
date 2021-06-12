@@ -89,8 +89,12 @@ def get_dataset(files_path, names):
 
             for data, label in zip(data, labels):
                 data_preprocessed = data.reshape(32,32,3)
+
                 X_train.append(data_preprocessed)
-                Y_train.append(label)
+
+                label_one_hot = [0 for i in range(10)]
+                label_one_hot[label-1] = 1
+                Y_train.append(label_one_hot)
 
         if name == "data_batch_5":
             path_file = os.path.join(files_path, name)
@@ -100,7 +104,10 @@ def get_dataset(files_path, names):
             for data, label in zip(data, labels):
                 data_preprocessed = data.reshape(32,32,3)
                 X_valid.append(data_preprocessed)
-                Y_valid.append(label)
+
+                label_one_hot = [0 for i in range(10)]
+                label_one_hot[label-1] = 1
+                Y_valid.append(label_one_hot)
 
         if name == "test_batch":
             path_file = os.path.join(files_path, name)
@@ -109,8 +116,10 @@ def get_dataset(files_path, names):
             labels = dataset[b'labels']
             for data, label in zip(data, labels):
                 data_preprocessed = data.reshape(32,32,3)
+                label_one_hot = [0 for i in range(10)]
+                label_one_hot[label-1] = 1
                 X_test.append(data_preprocessed)
-                Y_test.append(label)
+                Y_test.append(label_one_hot)
 
 
     X_train = np.asarray(X_train)
