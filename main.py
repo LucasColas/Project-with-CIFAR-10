@@ -18,7 +18,7 @@ def unpickle(file):
     return dict
 
 names = os.listdir(files_path)
-print(names)
+
 
 
 def render_one_image(files_path, file, i):
@@ -27,8 +27,8 @@ def render_one_image(files_path, file, i):
         data = unpickle(path_file)
 
         img = data[b'data'][i]
-        print(data[b'labels'][i])
-        print(data[b'filenames'][i])
+        #print(data[b'labels'][i])
+        #print(data[b'filenames'][i])
 
         img_r = img[0:1024].reshape(32,32)
         img_g = img[1024:2048].reshape(32,32)
@@ -47,8 +47,8 @@ def render_several_images(files_path, file, num):
         path_file = os.path.join(files_path, file)
         data = unpickle(path_file)
 
-        print(data[b'labels'][i])
-        print(data[b'filenames'][i])
+        #print(data[b'labels'][i])
+        #print(data[b'filenames'][i])
 
         plt.subplot(330 + 1 + i)
 
@@ -80,7 +80,7 @@ def get_dataset(files_path, names):
 
 
         if name in data_train_names:
-            print("yes")
+
 
             path_file = os.path.join(files_path, name)
             dataset = unpickle(path_file)
