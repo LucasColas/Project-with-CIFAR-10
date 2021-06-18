@@ -150,7 +150,7 @@ model.add(layers.MaxPooling2D(2,2))
 model.add(layers.Conv2D(128, (3,3), padding="same", activation='relu', kernel_regularizer=regularizers.l2(0.001)))
 model.add(layers.Flatten())
 model.add(layers.Dense(128, activation='relu'))
-model.add(layers.Dropout(0.22))
+model.add(layers.Dropout(0.25))
 model.add(layers.Dense(10,activation='softmax'))
 
 print(X_train.shape, X_valid.shape,X_test.shape )
