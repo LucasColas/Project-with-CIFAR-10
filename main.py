@@ -148,11 +148,11 @@ model.add(layers.MaxPooling2D(2,2))
 model.add(layers.Conv2D(64, (3,3), padding="same", activation="relu", kernel_regularizer=regularizers.l2(0.001)))
 model.add(layers.Flatten())
 model.add(layers.Dense(128, activation='relu'))
-model.add(layers.Dropout(0.25))
+model.add(layers.Dropout(0.22))
 model.add(layers.Dense(10,activation='softmax'))
 
 print(X_train.shape, X_valid.shape,X_test.shape )
-model.compile(optimizer=optimizers.RMSprop(lr=2e-4),loss="categorical_crossentropy", metrics=["acc"])
+model.compile(optimizer=optimizers.RMSprop(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
 history = model.fit(X_train, Y_train, batch_size=32, epochs=27, validation_data=(X_valid, Y_valid))
 model.save("training.h5")
 
