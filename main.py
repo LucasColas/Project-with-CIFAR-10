@@ -133,6 +133,8 @@ def get_dataset(files_path, names):
 
 X_train, Y_train, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
 
+for i in range(100):
+    print("X train : ", X_train[i], "Label train : ", Y_train[i], "X valid : ", X_valid[i], "Y valid :", Y_valid[i])
 
 
 model = models.Sequential()
@@ -158,8 +160,6 @@ model.compile(optimizer=optimizers.RMSprop(lr=0.0003),loss="categorical_crossent
 history = model.fit(X_train, Y_train, batch_size=32, epochs=42, validation_data=(X_valid, Y_valid))
 model.save("training.h5")
 
-for i in range(40):
-    print("X train : ", X_train[i], "Label train : ", Y_train[i], "X valid : ", X_valid[i], "Y valid :", Y_valid[i])
 
 acc = history.history['acc']
 val_acc = history.history['val_acc']
