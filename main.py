@@ -156,7 +156,7 @@ model.add(layers.Dropout(0.40))
 model.add(layers.Dense(10,activation='softmax'))
 
 print(X_train.shape, X_valid.shape,X_test.shape )
-model.compile(optimizer=optimizers.SGD(lr=0.009,loss="categorical_crossentropy"), metrics=["acc"])
+model.compile(optimizer=optimizers.SGD(lr=0.009),loss="categorical_crossentropy", metrics=["acc"])
 history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_data=(X_valid, Y_valid))
 model.save("training.h5")
 
