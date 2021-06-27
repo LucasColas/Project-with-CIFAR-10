@@ -160,7 +160,6 @@ model.add(layers.MaxPooling2D(2,2))
 model.add(layers.BatchNormalization())
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
-model.add(layers.Dropout(0.25))
 model.add(layers.Dense(10,activation='softmax'))
 
 print(X_train.shape, X_valid.shape,X_test.shape )
