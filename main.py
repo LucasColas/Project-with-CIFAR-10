@@ -164,8 +164,8 @@ model.add(layers.Dense(10,activation='softmax'))
 
 print(X_train.shape, X_valid.shape,X_test.shape )
 model.compile(optimizer=optimizers.SGD(lr=0.06),loss="categorical_crossentropy", metrics=["acc"])
-#history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_data=(X_valid, Y_valid))
-#model.save("training.h5")
+history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_data=(X_valid, Y_valid))
+model.save("training.h5")
 
 
 acc = history.history['acc']
