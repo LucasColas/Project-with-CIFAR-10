@@ -9,7 +9,7 @@ from tensorflow.keras import layers, models, optimizers, regularizers
 from tensorflow.keras.applications.vgg16 import VGG16
 
 VGG_model = VGG16(weights="imagenet", include_top=False)
-
+VGG_model.summary()
 
 files_path = r"dataset"
 data_train_names = ["data_batch_1", "data_batch_2","data_batch_3", "data_batch_4"]
@@ -137,23 +137,26 @@ def get_dataset(files_path, names):
 X_train, Y_train, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
 
 for i in range(100):
-    print("X train : ", X_train[i], "Label train : ", Y_train[i], "X valid : ", X_valid[i], "Y valid :", Y_valid[i])
-
+    #print("X train : ", X_train[i], "Label train : ", Y_train[i], "X valid : ", X_valid[i], "Y valid :", Y_valid[i])
+    pass
 
 model = models.Sequential()
 
 
-model.add(layers.Conv2D(256, (3,3), activation='relu', input_shape=(32,32,3)))
+model.add(layers.Conv2D(64, (3,3), activation='relu', input_shape=(32,32,3)))
 model.add(layers.BatchNormalization())
-model.add(layers.Conv2D(128, (3,3), padding="same", activation='relu', kernel_regularizer=regularizers.l2(0.01)))
+model.add(layers.Conv2D(64, (3,3), padding="same", activation='relu', kernel_regularizer=regularizers.l2(0.01)))
 model.add(layers.MaxPooling2D(2,2))
 model.add(layers.BatchNormalization())
 model.add(layers.Conv2D(128, (3,3), padding="same", activation="relu", kernel_regularizer=regularizers.l2(0.01)))
 model.add(layers.BatchNormalization())
-model.add(layers.Conv2D(64, (3,3), padding="same", activation="relu", kernel_regularizer=regularizers.l2(0.01)))
+model.add(layers.Conv2D(128, (3,3), padding="same", activation="relu", kernel_regularizer=regularizers.l2(0.01)))
 model.add(layers.MaxPooling2D(2,2))
 model.add(layers.BatchNormalization())
-model.add(layers.Conv2D(32, (3,3), padding="same", activation='relu', kernel_regularizer=regularizers.l2(0.01)))
+model.add(layers.Conv2D(256, (3,3), padding="same", activation='relu', kernel_regularizer=regularizers.l2(0.01)))
+model.add(layers.BatchNormalization())
+model.add(layers.Conv2D(256, (3,3), padding="same", activation='relu', kernel_regularizer=regularizers.l2(0.01)))
+model.add(layers.MaxPooling2D(2,2))
 model.add(layers.BatchNormalization())
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
