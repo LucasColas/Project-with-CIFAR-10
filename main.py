@@ -140,6 +140,8 @@ for i in range(100):
     #print("X train : ", X_train[i], "Label train : ", Y_train[i], "X valid : ", X_valid[i], "Y valid :", Y_valid[i])
     pass
 
+
+"""
 model = models.Sequential()
 
 
@@ -161,6 +163,14 @@ model.add(layers.BatchNormalization())
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10,activation='softmax'))
+"""
+
+model = model.Sequential()
+model.add(VGG_model)
+model.add(layers.Flatten())
+model.add(layers.Dense(256, activation='relu'))
+model.add(layers.Dropout(0.25))
+model.add(layers.Dense(15, activation='softmax'))
 
 print(X_train.shape, X_valid.shape,X_test.shape )
 model.compile(optimizer=optimizers.SGD(lr=0.06),loss="categorical_crossentropy", metrics=["acc"])
