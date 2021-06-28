@@ -8,7 +8,7 @@ from tensorflow import keras
 from tensorflow.keras import layers, models, optimizers, regularizers
 from tensorflow.keras.applications.vgg16 import VGG16
 
-VGG_model = VGG16(weights="imagenet", include_top=False)
+VGG_model = VGG16(weights="imagenet", include_top=False, input_shape=(32,32,3))
 VGG_model.summary()
 
 files_path = r"dataset"
@@ -165,7 +165,7 @@ model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10,activation='softmax'))
 """
 
-model = model.Sequential()
+model = models.Sequential()
 model.add(VGG_model)
 model.add(layers.Flatten())
 model.add(layers.Dense(128, activation='relu'))
