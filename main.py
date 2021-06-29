@@ -12,7 +12,7 @@ VGG_model = VGG16(weights="imagenet", include_top=False, input_shape=(32,32,3))
 VGG_model.summary()
 
 (x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
-print(x_train.shape, y_train.shape, x_test.shape, y_test.shape.shape)
+print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
 files_path = r"dataset"
 data_train_names = ["data_batch_1", "data_batch_2","data_batch_3", "data_batch_4"]
@@ -72,6 +72,12 @@ def render_several_images(files_path, file, num):
 
 
 #render_several_images(files_path, names[2], 9)
+
+def sort_test_set(y_train, y_test):
+    Y_train = np.zeros((50000,10))
+    Y_test = np.zeros((10000,10))
+    for index,label in y_train:
+        Y_train[index, label] = 1
 
 
 """
@@ -142,9 +148,9 @@ X_train, Y_train, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, nam
 for i in range(100):
     #print("X train : ", X_train[i], "Label train : ", Y_train[i], "X valid : ", X_valid[i], "Y valid :", Y_valid[i])
     pass
-"""
 
-"""
+
+
 model = models.Sequential()
 
 
@@ -166,7 +172,7 @@ model.add(layers.BatchNormalization())
 model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10,activation='softmax'))
-"""
+
 
 model = models.Sequential()
 model.add(VGG_model)
@@ -175,7 +181,7 @@ model.add(layers.Dense(128, activation='relu'))
 model.add(layers.Dropout(0.25))
 model.add(layers.Dense(10, activation='softmax'))
 
-print(X_train.shape, X_valid.shape,X_test.shape )
+
 model.compile(optimizer=optimizers.SGD(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
 #history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_data=(X_valid, Y_valid))
 model.save("training.h5")
@@ -201,3 +207,4 @@ plt.title('Training and validation loss')
 plt.legend()
 
 plt.show()
+"""
