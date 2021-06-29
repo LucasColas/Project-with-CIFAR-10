@@ -181,7 +181,7 @@ model.add(layers.Flatten())
 model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10,activation='softmax'))
 
-
+"""
 model = models.Sequential()
 model.add(VGG_model)
 model.add(layers.Flatten())
@@ -191,8 +191,9 @@ model.add(layers.Dense(10, activation='softmax'))
 
 
 model.compile(optimizer=optimizers.SGD(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
-#history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_data=(X_valid, Y_valid))
+history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_split=(0.2))
 model.save("training.h5")
+
 
 
 acc = history.history['acc']
@@ -215,4 +216,3 @@ plt.title('Training and validation loss')
 plt.legend()
 
 plt.show()
-"""
