@@ -11,7 +11,7 @@ from tensorflow.keras.applications.vgg16 import VGG16
 VGG_model = VGG16(weights="imagenet", include_top=False, input_shape=(32,32,3))
 VGG_model.summary()
 
-(x_train, y_train), (x_test, y_test) = keras.datasets.cifar10.load_data()
+(X_train, y_train), (X_test, y_test) = keras.datasets.cifar10.load_data()
 print(x_train.shape, y_train.shape, x_test.shape, y_test.shape)
 
 files_path = r"dataset"
@@ -83,7 +83,10 @@ def sort_test_set(y_train, y_test):
     for index, label in enumerate(y_test):
         Y_test[index, label] = 1
 
-sort_test_set(y_train, y_test)
+
+    return Y_train, Y_test
+
+Y_train, Y_test = sort_test_set(y_train, y_test)
 
 """
 
