@@ -180,7 +180,17 @@ model.add(layers.Dense(10,activation='softmax'))
 """
 
 X_train /= 255
-y_train /= 255
+VGG_model.trainable = True
+set_trainable = False
+for layer in conv_base.layers:
+    if layer.name == 'block5_conv1':
+        set_trainable = True
+
+    if set_trainable:
+        layer.trainable = True
+
+    else:
+        layer.trainable = False
 model = models.Sequential()
 model.add(VGG_model)
 model.add(layers.Flatten())
@@ -190,7 +200,7 @@ model.add(layers.Dense(10, activation='softmax'))
 
 
 model.compile(optimizer=optimizers.SGD(lr=2e-3),loss="categorical_crossentropy", metrics=["acc"])
-history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_split=(0.2))
+history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_split=(0.25))
 model.save("training.h5")
 
 
