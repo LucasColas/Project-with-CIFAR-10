@@ -12,7 +12,9 @@ VGG_model = VGG16(weights="imagenet", include_top=False, input_shape=(32,32,3))
 VGG_model.summary()
 
 (X_train, y_train), (X_test, y_test) = keras.datasets.cifar10.load_data()
-print(X_train.shape, y_train.shape, X_test.shape, y_test.shape)
+X_train = X_train.astype('float32')
+X_test = X_test.astype('float32')
+print(X_train.dtype, y_train.shape, X_test.shape, y_test.shape)
 
 files_path = r"dataset"
 data_train_names = ["data_batch_1", "data_batch_2","data_batch_3", "data_batch_4"]
