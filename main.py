@@ -184,7 +184,7 @@ model.add(layers.Dense(10,activation='softmax'))
 X_train /= 255
 VGG_model.trainable = True
 set_trainable = False
-for layer in conv_base.layers:
+for layer in VGG_model.layers:
     if layer.name == 'block5_conv1':
         set_trainable = True
 
