@@ -74,7 +74,7 @@ def render_several_images(files_path, file, num):
 #render_several_images(files_path, names[2], 9)
 
 def sort_test_set(y_train, y_test):
-    i,j = 0,0
+
     Y_train = np.zeros((50000,10))
     Y_test = np.zeros((10000,10))
     for index, label in enumerate(y_train):
