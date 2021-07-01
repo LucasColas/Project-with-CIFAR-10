@@ -191,10 +191,11 @@ for layer in conv_base.layers:
 
     else:
         layer.trainable = False
+
 model = models.Sequential()
 model.add(VGG_model)
 model.add(layers.Flatten())
-model.add(layers.Dense(128, activation='relu'))
+model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dropout(0.25))
 model.add(layers.Dense(10, activation='softmax'))
 
