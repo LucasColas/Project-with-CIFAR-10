@@ -203,7 +203,7 @@ model.add(layers.Dense(10, activation='softmax'))
 
 
 model.compile(optimizer=optimizers.SGD(lr=2e-3),loss="categorical_crossentropy", metrics=["acc"])
-history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_split=(0.25))
+history = model.fit(X_train, Y_train, batch_size=32, epochs=11, validation_split=(0.25))
 model.save("training.h5")
 
 
