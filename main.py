@@ -153,10 +153,6 @@ def get_dataset(files_path, names):
 
 X_train, Y_train, X_valid, Y_valid, X_test, Y_test = get_dataset(files_path, names)
 
-for i in range(100):
-    #print("X train : ", X_train[i], "Label train : ", Y_train[i], "X valid : ", X_valid[i], "Y valid :", Y_valid[i])
-    pass
-
 
 
 model = models.Sequential()
@@ -182,6 +178,9 @@ model.add(layers.Dense(64, activation='relu'))
 model.add(layers.Dense(10,activation='softmax'))
 
 """
+
+X_train /= 255
+y_train /= 255
 model = models.Sequential()
 model.add(VGG_model)
 model.add(layers.Flatten())
@@ -190,7 +189,7 @@ model.add(layers.Dropout(0.25))
 model.add(layers.Dense(10, activation='softmax'))
 
 
-model.compile(optimizer=optimizers.SGD(lr=2e-5),loss="categorical_crossentropy", metrics=["acc"])
+model.compile(optimizer=optimizers.SGD(lr=2e-3),loss="categorical_crossentropy", metrics=["acc"])
 history = model.fit(X_train, Y_train, batch_size=32, epochs=50, validation_split=(0.2))
 model.save("training.h5")
 
