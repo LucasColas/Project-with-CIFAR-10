@@ -183,6 +183,7 @@ model.add(layers.Dense(10,activation='softmax'))
 
 X_train /= 255
 X_test /= 255
+
 VGG_model.trainable = True
 set_trainable = False
 for layer in VGG_model.layers:
